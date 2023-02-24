@@ -9,12 +9,16 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: <Widget>[
-        Icon(Icons.contacts,
-        size: 170.0,
-        color: Colors.orange),
-        Text("Pantalla de contacto")
-      ]),
+      child: Column(
+        children: <Widget>[
+          Icon(
+            Icons.contacts,
+            size: 170.0,
+            color: Colors.orange,
+          ),
+          Text("Pantalla de contacto")
+        ],
+      ),
     );
   }
 }
