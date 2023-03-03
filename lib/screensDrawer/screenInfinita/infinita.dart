@@ -19,8 +19,7 @@ class _InfinitaState extends State<Infinita> {
   ListTile buildRow(WordPair pair) {
     final bool alreadySaved = saved.contains(pair);
     return ListTile(
-      trailing: Icon(
-          alreadySaved ? Icons.favorite : Icons.favorite_border,
+      trailing: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,
           color: Colors.redAccent),
       title: Text(pair.asCamelCase),
       onTap: () {
@@ -80,6 +79,7 @@ class _InfinitaState extends State<Infinita> {
           //funcion generateWordPairs: tomamos los elementos de tipo WordPair
           //y agregamos a la coleccion de datos
           suggestions.addAll(generateWordPairs().take(10));
+          Text("HOLA");
         }
         return buildRow(suggestions[i]);
         /*return ListTile(
