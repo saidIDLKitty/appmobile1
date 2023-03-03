@@ -20,8 +20,10 @@ class _InfinitaState extends State<Infinita> {
     return ListTile(
       trailing: Icon(Icons.shopping_cart),
       title: Text(pair.asCamelCase),
-      onTap: (){ //Captura los eventos en la pantalla
-        setState(() { //Renderiza los widgets
+      onTap: () {
+        //Captura los eventos en la pantalla
+        setState(() {
+          //Renderiza los widgets
           saved.add(pair); //Agrega un elemento
         });
       },
@@ -34,9 +36,26 @@ class _InfinitaState extends State<Infinita> {
 
   @override
   Widget build(BuildContext context) {
+    void pushSaved() {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("Guardadas"),
+          ),
+        );
+      }));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Lista infinita"),
+        actions: <Widget>[
+          //Creamos un icon button para acceder a otra pantalla
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: pushSaved,
+          ),
+        ],
       ),
       body: ListView.builder(itemBuilder: (context, i) {
         //si es impar llamar al Widget divider
