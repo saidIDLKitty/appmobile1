@@ -17,14 +17,21 @@ class _InfinitaState extends State<Infinita> {
   //Construimos una funcion
   //Construimos las filas
   ListTile buildRow(WordPair pair) {
+    final bool alreadySaved = saved.contains(pair);
     return ListTile(
-      trailing: Icon(Icons.shopping_cart),
+      trailing: Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: Colors.redAccent),
       title: Text(pair.asCamelCase),
       onTap: () {
         //Captura los eventos en la pantalla
         setState(() {
-          //Renderiza los widgets
-          saved.add(pair); //Agrega un elemento
+          if (alreadySaved) {
+            saved.remove(pair);
+          } else {
+            //Renderiza los widgets
+            saved.add(pair); //Agrega un elemento
+          }
         });
       },
     );
@@ -37,11 +44,18 @@ class _InfinitaState extends State<Infinita> {
   @override
   Widget build(BuildContext context) {
     void pushSaved() {
+      //direcciona a una ruta especifica
       Navigator.push(context, MaterialPageRoute(builder: (context) {
+        final title = saved
+            .map((pair) => ListTile(
+                  title: Text(pair.asPascalCase),
+                ))
+            .toList();
         return Scaffold(
           appBar: AppBar(
             title: Text("Guardadas"),
           ),
+          body: ListView(children: title),
         );
       }));
     }
