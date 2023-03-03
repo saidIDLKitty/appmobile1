@@ -14,6 +14,7 @@ class _InfinitaState extends State<Infinita> {
   final suggestions = <WordPair>[];
   //Para guardar los elementos que hacemos click
   final saved = <WordPair>[];
+  final total = 0;
   //Construimos una funcion
   //Construimos las filas
   ListTile buildRow(WordPair pair) {
@@ -22,6 +23,7 @@ class _InfinitaState extends State<Infinita> {
       trailing: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,
           color: Colors.redAccent),
       title: Text(pair.asCamelCase),
+      subtitle: Text("Precio:${Random().nextInt(500)}"),
       onTap: () {
         //Captura los eventos en la pantalla
         setState(() {
@@ -48,13 +50,17 @@ class _InfinitaState extends State<Infinita> {
         final title = saved
             .map((pair) => ListTile(
                   title: Text(pair.asPascalCase),
+                  subtitle: Text("S/.${Random().nextInt(500)}"),
                 ))
             .toList();
+            
         return Scaffold(
           appBar: AppBar(
             title: Text("Guardadas"),
           ),
-          body: ListView(children: title),
+          body: 
+          ListView(children: title),
+          
         );
       }));
     }
@@ -68,7 +74,7 @@ class _InfinitaState extends State<Infinita> {
             icon: Icon(Icons.list),
             onPressed: pushSaved,
           ),
-        ],
+        ],      
       ),
       body: ListView.builder(itemBuilder: (context, i) {
         //si es impar llamar al Widget divider
@@ -79,7 +85,7 @@ class _InfinitaState extends State<Infinita> {
           //funcion generateWordPairs: tomamos los elementos de tipo WordPair
           //y agregamos a la coleccion de datos
           suggestions.addAll(generateWordPairs().take(10));
-          Text("HOLA");
+          
         }
         return buildRow(suggestions[i]);
         /*return ListTile(
