@@ -11,6 +11,8 @@ class ContactItem extends StatelessWidget {
       leading: CircleAvatar(
         child: Text("R"),
       ),
+      //title: Text(contact.name),
+      //subtitle: Text(contact.email),
       title: Text("Rodrigo"),
       subtitle: Text("Rodrigo@gmail.com"),
     );

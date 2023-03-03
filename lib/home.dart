@@ -34,7 +34,8 @@ class _HomeState extends State<Home> {
           getItem(Icon(Icons.settings), 'Configuracion', '/configuracion'),
           getItem(Icon(Icons.home), 'Pagina Principal', '/'),
           getItem(Icon(Icons.battery_charging_full), 'Bateria', '/bateria'),
-           getItem(Icon(Icons.contact_mail), 'Contacto', '/contac'),
+          getItem(Icon(Icons.contact_mail), 'Contacto', '/contac'),
+          getItem(Icon(Icons.shopping_cart), 'Productos', '/infinita'),
           info
         ],
       );

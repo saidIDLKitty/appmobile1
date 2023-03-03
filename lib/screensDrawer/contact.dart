@@ -15,8 +15,15 @@ class Contact extends StatelessWidget {
       ContactModel(name: "Jessica Carrera", email: "jcarrera@gmail.com"),
     ];
   }
-  
 
+  //Retornamos una lista de contactItem
+  /*List<ContactItem> buildContactList() {
+    return buildList()
+        //Funcion map recorre todos los elementos del dataSource
+        .map<ContactItem>((contact) => ContactItem(contact))
+        .ToList();
+  }*/
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
