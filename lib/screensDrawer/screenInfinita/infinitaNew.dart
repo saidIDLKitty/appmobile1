@@ -7,21 +7,31 @@ class Infinita extends StatefulWidget {
   _InfinitaState createState() => _InfinitaState();
 }
 
-
 class _InfinitaState extends State<Infinita> {
   //suggestions: sugerencias tipo lista
   //WordPair: clase de combinacion de 2 palabras(English words)
   final suggestions = <WordPair>[];
   //Para guardar los elementos que hacemos click
   final saved = <WordPair>[];
+  List<int> precios() {
+    List<int> lista = [];
+    for (var i = 0; i < suggestions.length; i++) {
+      lista.add(100+i);
+    }
+    return lista;
+  }
+  List<int> listasegura= [];
+  final total = 0;
   //Construimos una funcion
   //Construimos las filas
-  ListTile buildRow(WordPair pair) {
+  ListTile buildRow(WordPair pair, int i) {
+    listasegura = precios();
     final bool alreadySaved = saved.contains(pair);
     return ListTile(
       trailing: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,
           color: Colors.redAccent),
       title: Text(pair.asCamelCase),
+      subtitle: Text("Precio:${listasegura[suggestions.indexOf(pair)]}"),
       onTap: () {
         //Captura los eventos en la pantalla
         setState(() {
@@ -44,22 +54,24 @@ class _InfinitaState extends State<Infinita> {
   Widget build(BuildContext context) {
     void pushSaved() {
       //direcciona a una ruta especifica
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        final title = saved
-            .map((pair) => ListTile(
-                  title: Text(pair.asPascalCase),
-                ))
-            .toList();
-            
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Guardadas"),
-          ),
-          body: 
-          ListView(children: title),
-          
-        );
-      }));
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) {
+          final title = saved
+              .map((pair) => ListTile(
+                    title: Text(pair.asPascalCase),
+                    subtitle: Text("S/.${listasegura[suggestions.indexOf(pair)]}"),
+                  ))
+              .toList();
+
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("Guardadas"),
+            ),
+            body: ListView(children: title),
+          );
+        }),
+      );
     }
 
     return Scaffold(
@@ -71,7 +83,7 @@ class _InfinitaState extends State<Infinita> {
             icon: Icon(Icons.list),
             onPressed: pushSaved,
           ),
-        ],      
+        ],
       ),
       body: ListView.builder(itemBuilder: (context, i) {
         //si es impar llamar al Widget divider
@@ -82,9 +94,8 @@ class _InfinitaState extends State<Infinita> {
           //funcion generateWordPairs: tomamos los elementos de tipo WordPair
           //y agregamos a la coleccion de datos
           suggestions.addAll(generateWordPairs().take(10));
-          
         }
-        return buildRow(suggestions[i]);
+        return buildRow(suggestions[i], i);
         /*return ListTile(
           leading: Icon(Icons.shopping_cart),
           title: Text('Producto $i'),
