@@ -5,25 +5,23 @@ import 'package:flutter/material.dart';
 class Contact extends StatelessWidget {
   static const String routeName = "/contac";
   //Creamos metodo que retorna un contactModel
-  buildList() {
+  List<ContactModel> buildList() {
     return <ContactModel>[
-      ContactModel(name: "Rodrigo Lopez", email: "rlopez@gmail.com"),
-      ContactModel(name: "Angel Torres", email: "atorres@gmail.com"),
-      ContactModel(name: "Luis Perez", email: "lperez@gmail.com"),
-      ContactModel(name: "Jenifer Arana", email: "jarana@gmail.com"),
-      ContactModel(name: "Carlos Ipanaque", email: "cipanaque@gmail.com"),
-      ContactModel(name: "Jessica Carrera", email: "jcarrera@gmail.com"),
+      ContactModel("leancoder27@gmail.com", "Leandro Palma Alvarado"),
+      ContactModel("0333181023@unjfsc.edu.pe", "Martin Palma Alvarado"),
+      ContactModel("abelito1900@gmail.com", "Abel Toti Cabrera Alvino"),
+      ContactModel("rorroXD@gmail.com", "Rodrigo Flores Allccaco"),
+      ContactModel("tati27@gmail.com", "Tati Palma Alvarado"),
+      ContactModel("totiCAT@gmail.com", "Toti Palma Alvarado"),
     ];
   }
 
   //Retornamos una lista de contactItem
-  /*List<ContactItem> buildContactList() {
-    return buildList()
-        //Funcion map recorre todos los elementos del dataSource
-        .map<ContactItem>((contact) => ContactItem(contact))
-        .ToList();
-  }*/
-  
+  List<ContactItem> buildContactList() {
+    List<ContactItem> contactItems = buildList().map((contactModel) => ContactItem(contactModel)).toList();
+    return contactItems;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class Contact extends StatelessWidget {
         title: Text("Contacto"),
       ),
       body: ListView(
-        children: <Widget>[ContactItem()],
+        children: buildContactList(),
       ),
     );
   }

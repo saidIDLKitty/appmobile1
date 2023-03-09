@@ -55,14 +55,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-/*class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Pagina Principal"),
-      ),
-      drawer: Drawer(),
-    );
-  }
-}*/
