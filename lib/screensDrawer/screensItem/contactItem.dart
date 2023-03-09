@@ -8,12 +8,11 @@ class ContactItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
+        // Linea de codigo para poder obtener el primer caracter del name (para mostrarlo en el avatar):
         child: Text(contact!.name.split(contact!.name.substring(1)).first),
       ),
       title: Text(contact!.name),
       subtitle: Text(contact!.email),
-      /* title: Text("Rodrigo"),
-      subtitle: Text("Rodrigo@gmail.com"), */
     );
   }
 }
