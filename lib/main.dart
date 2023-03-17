@@ -3,6 +3,7 @@ import 'package:appmobile1/screensDrawer/battery.dart';
 import 'package:appmobile1/screensDrawer/screenInfinita/infinita.dart';
 import 'package:appmobile1/screensDrawer/settings.dart';
 import 'package:appmobile1/screensDrawer/contact.dart';
+import 'package:appmobile1/screensform/validationform.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +14,7 @@ void main() {
       Battery.routeName: (BuildContext context) => Battery(),
       Contact.routeName: (BuildContext context) => Contact(),
       Infinita.routeName: (BuildContext context) => Infinita(),
+      Validation.routeName: (BuildContextcontext) => Validation(),
     },
   ));
 }
