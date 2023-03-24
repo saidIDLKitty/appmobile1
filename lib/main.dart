@@ -16,7 +16,7 @@ void main() {
       Contact.routeName: (BuildContext context) => Contact(),
       Infinita.routeName: (BuildContext context) => Infinita(),
       Validation.routeName: (BuildContextcontext) => Validation(),
-      Appbloc.routeName: (BuildContext context) => AppBar(),
+      Appbloc.routeName: (BuildContext context) => Appbloc(),
     },
   ));
 }
