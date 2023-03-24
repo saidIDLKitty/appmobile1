@@ -11,7 +11,9 @@ class LoginScreen extends StatelessWidget {
         children: <Widget>[
           emailField(),
           passwordField(),
-          Container(margin: EdgeInsets.only(top: 25.0),),
+          Container(
+            margin: EdgeInsets.only(top: 25.0),
+          ),
           submitButton(),
         ],
       ),
@@ -26,6 +28,11 @@ class LoginScreen extends StatelessWidget {
         labelText: 'Email',
         errorText: '',
       ),
+      onChanged: (value) {
+        //Enviamos datos al string
+        //Llamamos al emailController(/bloc.dart), sink y add enviamos el valor del usuario
+        bloc.emailController.sink.add(value);
+      },
     );
   }
 
@@ -35,6 +42,10 @@ class LoginScreen extends StatelessWidget {
         labelText: 'Contraseña',
         hintText: 'Contraseña',
       ),
+      onChanged: (value) {
+        //Enviamos datos al string
+        bloc.passwordController.sink.add(value);
+      },
     );
   }
 
