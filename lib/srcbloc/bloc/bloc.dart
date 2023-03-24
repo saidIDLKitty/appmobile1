@@ -1,11 +1,22 @@
 import 'dart:async';
+import 'package:appmobile1/srcbloc/bloc/validator.dart';
 
-class Bloc {
-  final emailController = StreamController<String>();
-  final passwordController = StreamController<String>();
+class Bloc with Validator {
+  final _emailController = StreamController<String>();
+  final _passwordController = StreamController<String>();
 
-  //Recibimos un parametro de tipo String y agregamos el valor que llega al String 
+  Stream<String> get email => _emailController.stream.transform(validaEmail);
+  Stream<String> get password =>
+      _passwordController.stream.transform(validaPassword);
 
-  Function(String) get changeEmail => emailController.sink.add;
-  Function(String) get changePassword => passwordController.sink.add;
+  //Recibimos un parametro de tipo String y agregamos el valor que llega al String
+
+  Function(String) get changeEmail => _emailController.sink.add;
+  Function(String) get changePassword => _passwordController.sink.add;
+  dispose() {
+    _emailController.close();
+    _passwordController.close();
+  }
 }
+
+final bloc = Bloc();

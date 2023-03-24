@@ -21,31 +21,44 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget emailField() {
-    return TextField(
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
-        hintText: 'example@dominio.com',
-        labelText: 'Email',
-        errorText: '',
-      ),
-      onChanged: (value)=> bloc.changeEmail,
-      /*onChanged: (value) {
-        //Enviamos datos al string
-        //Llamamos al emailController(/bloc.dart), sink y add enviamos el valor del usuario
-        bloc.emailController.sink.add(value);
-      },*/
+    return StreamBuilder(
+      stream: bloc.email,
+      builder: (context, snapshot) {
+        return TextField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            hintText: 'example@dominio.com',
+            labelText: 'Email',
+            errorText: snapshot.error.toString(),
+          ),
+          onChanged: (value) => bloc.changeEmail,
+          /*onChanged: (value) {
+          //Enviamos datos al string
+          //Llamamos al emailController(/bloc.dart), sink y add enviamos el valor del usuario
+          bloc.emailController.sink.add(value);
+          },*/
+        );
+      },
     );
   }
 
   Widget passwordField() {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: 'Contraseña',
-        hintText: 'Contraseña',
-      ),
-      onChanged: (value) {
-        //Enviamos datos al string
-        bloc.passwordController.sink.add(value);
+    return StreamBuilder(
+      stream: bloc.password,
+      builder: (context, snapshot) {
+        return TextField(
+          decoration: InputDecoration(
+            labelText: 'Contraseña',
+            hintText: 'Contraseña',
+            errorText: snapshot.error.toString(),
+          ),
+          obscureText: true,
+          onChanged: (value) => bloc.changePassword,
+          /*onChanged: (value) {
+          //Enviamos datos al string
+          bloc.passwordController.sink.add(value);
+          },*/
+        );
       },
     );
   }
