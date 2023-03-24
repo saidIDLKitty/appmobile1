@@ -28,11 +28,12 @@ class LoginScreen extends StatelessWidget {
         labelText: 'Email',
         errorText: '',
       ),
-      onChanged: (value) {
+      onChanged: (value)=> bloc.changeEmail,
+      /*onChanged: (value) {
         //Enviamos datos al string
         //Llamamos al emailController(/bloc.dart), sink y add enviamos el valor del usuario
         bloc.emailController.sink.add(value);
-      },
+      },*/
     );
   }
 
