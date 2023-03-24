@@ -4,6 +4,7 @@ import 'package:appmobile1/screensDrawer/screenInfinita/infinita.dart';
 import 'package:appmobile1/screensDrawer/settings.dart';
 import 'package:appmobile1/screensDrawer/contact.dart';
 import 'package:appmobile1/screensform/validationform.dart';
+import 'package:appmobile1/srcbloc/appbloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,6 +16,7 @@ void main() {
       Contact.routeName: (BuildContext context) => Contact(),
       Infinita.routeName: (BuildContext context) => Infinita(),
       Validation.routeName: (BuildContextcontext) => Validation(),
+      Appbloc.routeName: (BuildContext context) => AppBar(),
     },
   ));
 }

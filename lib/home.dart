@@ -37,6 +37,7 @@ class _HomeState extends State<Home> {
           getItem(Icon(Icons.contact_mail), 'Contacto', '/contac'),
           getItem(Icon(Icons.shopping_cart), 'Productos', '/infinita'),
           getItem(Icon(Icons.login_rounded), 'Validacion', '/validation'),
+          getItem(Icon(Icons.login_sharp), 'Login', '/bloc'),
           info
         ],
       );
